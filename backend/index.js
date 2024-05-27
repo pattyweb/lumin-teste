@@ -134,8 +134,14 @@ app.get('/test', (req, res) => {
   res.send('Test endpoint is working!');
 });
 
+module.exports = app;
 
-const port = process.env.PORT || 3001;
+
+// Define your server logic
+let port = process.env.PORT || 3001; // Change const to let
+if (process.env.NODE_ENV == 'test') {
+  port = 0;
+}
 
 app.listen(port, () => {
   console.log(`Backend server running on port ${port}`);
